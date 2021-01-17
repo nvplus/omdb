@@ -5,7 +5,7 @@ function Banner() {
 
     return (
         <div className="banner">
-            Five nominations achieved!
+            You've nominated five movies!
         </div>
     )
 }

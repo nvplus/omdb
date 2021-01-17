@@ -1,47 +1,64 @@
-.App {
+body {
+  background-color: #0d0d0d;
+  color: white;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
+  font-size: 15px;
+  background-color: #1f1f1f;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-left: 50px;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar h1 {
+  margin-right: 59%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar p {
+  position: relative;
+  top: 20%;
+  padding-right: 10px;
 }
+
+.navbar button {
+  height: 50px; 
+}
+
 
 .banner {
-  background-color: red;
+  background-color: #ed2553;
   border-radius: 3px;
   text-align: center;
   width: 100%;
   padding: 5px;
   margin-bottom: 5px;
+}
+
+.movie-list {
+  list-style-type: none;
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+  background-color: #1f1f1f;
+}
+
+.movie-list-item {
+  word-wrap: break-word;
+  font-size: 10px;
+  text-align: center;
+  display:inline-block;
+  margin: 10px;
+  max-width: 220px;
+}
+
+.movie-list-item > img {
+  height: 200px;
+  width: 120x;
+}
+
+.movie-search input {
+  width: 35%;
 }

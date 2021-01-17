@@ -46,9 +46,17 @@ function SignOut() {
 
 function UserDisplay(props) {
   return <div>
-    <img src={props.user.photoURL} width="50px"/>
-    <p>Hello, {props.user.displayName}</p>
+    <p><img src={props.user.photoURL} height="14px"/>       {props.user.displayName}</p>
   </div>
+}
+
+function Navbar(props) {
+  return (
+    <div className="navbar">
+        <h1>OMDb Nomination App</h1>
+        {props.user && <UserDisplay user={props.user}/>}{props.user ? <SignOut/> : <SignIn/>}
+    </div>
+  )
 }
 
 function App() {
@@ -56,7 +64,16 @@ function App() {
   const [searchResults, setSearchResults] = useState();
   const [user] = useAuthState(auth);
 
+  let isNominationUnique = imdbID => {
+    for (const nomination of nominations) {
+      if (nomination.imdbID == imdbID) return false;
+    }
+    return true;
+  }
+
   let nominateMovie = movie => {
+    if (!isNominationUnique(movie.imdbID)) return;
+
     if (nominations.length >= 5) {
       alert("You may only have up to 5 nominations, please remove one."); 
     }
@@ -67,15 +84,18 @@ function App() {
 
   return (
     <div>
-      <h1>OMDb Nomination App</h1>
       {nominations.length == 5 && <Banner/>}
-      {user && <UserDisplay user={user}/>}
-      {user ? <SignOut/> : <SignIn/>}
-    
-      <MovieSearch searchResults={searchResults} setSearchResults={setSearchResults}/>
-      {searchResults !== [] && <div>{<MovieSearchDisplay results={searchResults} nominateMovie={nominateMovie}/>}</div>}
-      {nominations.length > 0 && <NominationsDisplay nominations={nominations} setNominations={setNominations}/>}
+      <Navbar user={user}/>
+      <div className="omdb">
+        
+        <MovieSearch searchResults={searchResults} setSearchResults={setSearchResults}/>  
+        {searchResults !== [] && <div>{<MovieSearchDisplay results={searchResults} nominateMovie={nominateMovie}/>}</div>}
+        
+        {nominations.length > 0 && <NominationsDisplay nominations={nominations} setNominations={setNominations}/>}
+      </div>
     </div>
+
+
   )
 }
 

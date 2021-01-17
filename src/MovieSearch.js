@@ -23,7 +23,7 @@ function MovieSearch (props) {
     }
 
     return (
-        <div>
+        <div className="movie-search">
             <p>Search for a movie:</p>
             <form>
                 <input type='text' value={searchInput} onChange={onSearchInput}/>

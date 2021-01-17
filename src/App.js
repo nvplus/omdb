@@ -53,7 +53,7 @@ function UserDisplay(props) {
 function Navbar(props) {
   return (
     <div className="navbar">
-        <h1>OMDb Nomination App</h1>
+        <h1>The Shoppies</h1>
         {props.user && <UserDisplay user={props.user}/>}{props.user ? <SignOut/> : <SignIn/>}
     </div>
   )
@@ -87,11 +87,12 @@ function App() {
       {nominations.length == 5 && <Banner/>}
       <Navbar user={user}/>
       <div className="omdb">
-        
-        <MovieSearch searchResults={searchResults} setSearchResults={setSearchResults}/>  
-        {searchResults !== [] && <div>{<MovieSearchDisplay results={searchResults} nominateMovie={nominateMovie}/>}</div>}
-        
+        <MovieSearch searchResults={searchResults} setSearchResults={setSearchResults}/> 
+        {!searchResults && <div className="prompt"><p>Search for a movie to begin!</p></div>}
+        {searchResults !== [] && <div>{<MovieSearchDisplay results={searchResults} nominateMovie={nominateMovie}/>}
+      
         {nominations.length > 0 && <NominationsDisplay nominations={nominations} setNominations={setNominations}/>}
+        </div>}
       </div>
     </div>
 

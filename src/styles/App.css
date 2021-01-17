@@ -13,6 +13,7 @@ body {
 
 .navbar h1 {
   margin-right: 59%;
+  color: #5FF56B;
 }
 
 .navbar p {
@@ -22,9 +23,22 @@ body {
 }
 
 .navbar button {
-  height: 50px; 
+    height: 30px;
+    position: relative;
+    top: 24px;
 }
 
+.prompt {
+  background-color: #1f1f1f;
+  height: 300px;
+  font-size: 40px;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .banner {
   background-color: #ed2553;

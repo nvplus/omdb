@@ -3,6 +3,8 @@ Created for the [Shopify UX Developer Intern & Web Developer Intern Challenge - 
 
 Users can search for movies from the [Open Movie Database](http://www.omdbapi.com/) and choose five to nominate. The users' nominations can saved by logging in with their Google account.
 
+Click [here](https://omdb-nv.herokuapp.com/) for a live version of the site.
+
 ![A screenshot of the application](sample.png "The Shoppies")
 # Setup
 1. Populate `.env` with the required params
@@ -11,4 +13,3 @@ Users can search for movies from the [Open Movie Database](http://www.omdbapi.co
 
 # Todo:
 1. Full Firebase support
-2. Deployment onto Heroku

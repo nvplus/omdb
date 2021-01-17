@@ -47,7 +47,7 @@ function App() {
     }
     return false;
   }
-  
+
   let nominateMovie = movie => {
     if (isNominated(movie.imdbID)) return;
 
@@ -70,6 +70,9 @@ function App() {
         {nominations.length > 0 && <NominationsDisplay nominations={nominations} setNominations={setNominations}/>}
         </div>}
       </div>
+
+      <p>Built by Vincent Nguyen for the Shopify UX Developer Intern & Web Developer Intern Challenge - Summer 2021.</p>
+      <a href="https://github.com/nvplus/omdb"><p>Source code available on GitHub</p></a>
     </div>
 
 

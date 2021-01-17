@@ -7,7 +7,7 @@ function MovieSearch (props) {
 
     useEffect (() => {
         if (searchTerm !== '') {
-            axios(`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_API_KEY}&s=${searchTerm}&type=movie`).then(res => {
+            axios(`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_API_KEY}&s=${searchTerm}&type=movie`).then(res => {
                 props.setSearchResults(res.data); 
             });
         }

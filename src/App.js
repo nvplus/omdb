@@ -18,12 +18,8 @@ import { SignIn, SignOut, UserDisplay } from './FirebaseUtils';
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_KEY,
-  authDomain: "omdb-aad7c.firebaseapp.com",
-  projectId: "omdb-aad7c",
-  storageBucket: "omdb-aad7c.appspot.com",
-  messagingSenderId: "826421328702",
-  appId: "1:826421328702:web:a1c06ffa9708d726688a6f",
-  measurementId: "G-HNB7GLRMPP"
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID
 });
 
 const auth = firebase.auth();

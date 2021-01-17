@@ -5,7 +5,7 @@ Users can search for movies from the [Open Movie Database](http://www.omdbapi.co
 
 ![A screenshot of the application](sample.png "The Shoppies")
 # Setup
-1. Create a file in the root directory called `.env` and populate it with `REACT_APP_API_KEY=<Your OMDb key>` and `REACT_APP_FIREBASE_KEY=<Your Firebase key>`
+1. Populate `env` with the required params
 2. Run `npm install` to install the project dependencies
 3. Start the application with `npm start`
 

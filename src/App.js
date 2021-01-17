@@ -14,6 +14,8 @@ import 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
+import { SignIn, SignOut, UserDisplay } from './FirebaseUtils';
+
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: "omdb-aad7c.firebaseapp.com",
@@ -27,34 +29,11 @@ firebase.initializeApp({
 const auth = firebase.auth();
 const firestore = firebase.firestore();
 
-function SignIn() {
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider);
-
-  }
-  return (
-    <button onClick={signInWithGoogle}>Sign in</button>
-  )
-}
-
-function SignOut() {
-  return auth.currentUser && (
-    <button onClick={() => auth.signOut()}>Sign out</button>
-  )
-}
-
-function UserDisplay(props) {
-  return <div>
-    <p><img src={props.user.photoURL} height="14px"/>       {props.user.displayName}</p>
-  </div>
-}
-
 function Navbar(props) {
   return (
     <div className="navbar">
         <h1>The Shoppies</h1>
-        {props.user && <UserDisplay user={props.user}/>}{props.user ? <SignOut/> : <SignIn/>}
+        {props.user && <UserDisplay user={props.user} auth={auth}/>}{props.user ? <SignOut auth={auth}/> : <SignIn auth={auth}/>}
     </div>
   )
 }
@@ -90,7 +69,6 @@ function App() {
         <MovieSearch searchResults={searchResults} setSearchResults={setSearchResults}/> 
         {!searchResults && <div className="prompt"><p>Search for a movie to begin!</p></div>}
         {searchResults !== [] && <div>{<MovieSearchDisplay results={searchResults} nominateMovie={nominateMovie} isNominated={isNominated} />}
-      
         {nominations.length > 0 && <NominationsDisplay nominations={nominations} setNominations={setNominations}/>}
         </div>}
       </div>

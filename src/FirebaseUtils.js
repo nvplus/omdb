@@ -7,7 +7,6 @@ export const SignIn = (props) => {
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     props.auth.signInWithPopup(provider);
-
   }
 
   return (
@@ -23,7 +22,7 @@ export const SignOut = (props) => {
 
 export const UserDisplay = (props) => {
   return <div>
-    <p><img src={props.user.photoURL} height="20px"/>       {props.user.displayName}</p>
+    <p><img src={props.user.photoURL} height="20px" alt="avatar"/>       {props.user.displayName}</p>
   </div>
 }
 

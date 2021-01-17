@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import MovieSearch from './MovieSearch';
 import MovieSearchDisplay from './MovieSearchDisplay';
@@ -12,7 +12,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+// import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import { SignIn, SignOut, UserDisplay } from './FirebaseUtils';
 
@@ -23,7 +23,7 @@ firebase.initializeApp({
 });
 
 const auth = firebase.auth();
-const firestore = firebase.firestore();
+// const firestore = firebase.firestore();
 
 function Navbar(props) {
   return (
@@ -34,16 +34,19 @@ function Navbar(props) {
   )
 }
 
-
-
 function App() {
   const [nominations, setNominations] = useState([]);
   const [searchResults, setSearchResults] = useState();
   const [user] = useAuthState(auth);
 
+  useEffect(() => {
+    setNominations(JSON.parse(localStorage.getItem("localNominations")));
+
+  }, []);
+
   let isNominated = imdbID => {
     for (const nomination of nominations) {
-      if (nomination.imdbID == imdbID) return true;
+      if (nomination.imdbID === imdbID) return true;
     }
     return false;
   }
@@ -55,19 +58,21 @@ function App() {
       alert("You may only have up to 5 nominations, please remove one."); 
     }
     else {
-      setNominations([...nominations, movie]);
+      let newNoms = [...nominations, movie];
+      setNominations(newNoms);
+      localStorage.setItem("localNominations", JSON.stringify(newNoms));
     }
   }
 
   return (
     <div>
-      {nominations.length == 5 && <Banner/>}
+      {nominations.length === 5 && <Banner/>}
       <Navbar user={user}/>
       <div className="omdb">
         <MovieSearch searchResults={searchResults} setSearchResults={setSearchResults}/> 
-        {!searchResults && <div className="prompt"><p>Search for a movie to begin!</p></div>}
+        {!searchResults && nominations.length === 0 && <div className="prompt"><p>Search for a movie to begin!</p></div>}
         {searchResults !== [] && <div>{<MovieSearchDisplay results={searchResults} nominateMovie={nominateMovie} isNominated={isNominated} />}
-        {nominations.length > 0 && <NominationsDisplay nominations={nominations} setNominations={setNominations}/>}
+        {nominations.length > 0 && <NominationsDisplay nominations={nominations} setNominations={setNominations} />}
         </div>}
       </div>
 

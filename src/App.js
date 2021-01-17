@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 
 import MovieSearch from './MovieSearch';
 import MovieSearchDisplay from './MovieSearchDisplay';
+import NominationsDisplay from './NominationsDisplay';
+import Banner from './Banner';
 
 import './styles/App.css';
 
@@ -59,23 +61,20 @@ function App() {
       alert("You may only have up to 5 nominations, please remove one."); 
     }
     else {
-      console.log(movie);
       setNominations([...nominations, movie]);
     }
   }
-  
-  console.log(JSON.stringify(user));
 
   return (
     <div>
+      <h1>OMDb Nomination App</h1>
+      {nominations.length == 5 && <Banner/>}
       {user && <UserDisplay user={user}/>}
       {user ? <SignOut/> : <SignIn/>}
-      
-      <h1>OMDb Nomination App</h1>
+    
       <MovieSearch searchResults={searchResults} setSearchResults={setSearchResults}/>
       {searchResults !== [] && <div>{<MovieSearchDisplay results={searchResults} nominateMovie={nominateMovie}/>}</div>}
-      <h3>Your nominations:</h3>
-      <ul>{nominations.map(nom => <li key={nom.imdbID}>{nom.Title} ({nom.Year})</li>)}</ul>
+      {nominations.length > 0 && <NominationsDisplay nominations={nominations} setNominations={setNominations}/>}
     </div>
   )
 }

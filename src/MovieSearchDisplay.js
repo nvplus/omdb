@@ -13,7 +13,8 @@ function MovieSearchDisplay (props) {
         let resultLi = props.results.Search.map(res => {
             return (
                     <li key={res.imdbID}>
-                        {res.Title} ({res.Year} ) 
+                        <img src={res.Poster} width="30px" />
+                        {res.Title} ({res.Year}) 
                             <button onClick={() => props.nominateMovie(res)}>Nominate</button>
                     </li>
             )

@@ -5,7 +5,7 @@ Users can search for movies from the [Open Movie Database](http://www.omdbapi.co
 
 ![A screenshot of the application](sample.png "The Shoppies")
 # Setup
-1. Populate `env` with the required params
+1. Populate `.env` with the required params
 2. Run `npm install` to install the project dependencies
 3. Start the application with `npm start`
 

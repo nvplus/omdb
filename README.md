@@ -1,7 +1,7 @@
 # OMDb Viewer
 Created for the [Shopify UX Developer Intern & Web Developer Intern Challenge - Summer 2021](https://docs.google.com/document/d/1AZO0BZwn1Aogj4f3PDNe1mhq8pKsXZxtrG--EIbP_-w/edit?usp=sharing).
 
-Users can search for movies from the [Open Movie Database](http://www.omdbapi.com/) and choose five to nominate. The users' nominations can saved by logging in with their Google account.
+Users can search for movies from the [Open Movie Database](http://www.omdbapi.com/) and nominate up to five of them. For now, nominations are stored in the localStorage, but I'm trying to figure out how to save them in Firebase.
 
 Click [here](https://omdb-nv.herokuapp.com/) for a live version of the site.
 

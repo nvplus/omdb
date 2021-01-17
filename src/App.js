@@ -34,6 +34,8 @@ function Navbar(props) {
   )
 }
 
+
+
 function App() {
   const [nominations, setNominations] = useState([]);
   const [searchResults, setSearchResults] = useState();
@@ -45,7 +47,7 @@ function App() {
     }
     return false;
   }
-
+  
   let nominateMovie = movie => {
     if (isNominated(movie.imdbID)) return;
 

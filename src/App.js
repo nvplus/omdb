@@ -64,15 +64,15 @@ function App() {
   const [searchResults, setSearchResults] = useState();
   const [user] = useAuthState(auth);
 
-  let isNominationUnique = imdbID => {
+  let isNominated = imdbID => {
     for (const nomination of nominations) {
-      if (nomination.imdbID == imdbID) return false;
+      if (nomination.imdbID == imdbID) return true;
     }
-    return true;
+    return false;
   }
 
   let nominateMovie = movie => {
-    if (!isNominationUnique(movie.imdbID)) return;
+    if (isNominated(movie.imdbID)) return;
 
     if (nominations.length >= 5) {
       alert("You may only have up to 5 nominations, please remove one."); 
@@ -89,7 +89,7 @@ function App() {
       <div className="omdb">
         <MovieSearch searchResults={searchResults} setSearchResults={setSearchResults}/> 
         {!searchResults && <div className="prompt"><p>Search for a movie to begin!</p></div>}
-        {searchResults !== [] && <div>{<MovieSearchDisplay results={searchResults} nominateMovie={nominateMovie}/>}
+        {searchResults !== [] && <div>{<MovieSearchDisplay results={searchResults} nominateMovie={nominateMovie} isNominated={isNominated} />}
       
         {nominations.length > 0 && <NominationsDisplay nominations={nominations} setNominations={setNominations}/>}
         </div>}

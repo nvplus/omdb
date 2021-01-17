@@ -18,7 +18,7 @@ function MovieSearchDisplay (props) {
                     <li className="movie-list-item" key={res.imdbID}>
                         <img src={res.Poster != "N/A" ? res.Poster : "https://i.imgur.com/Z2MYNbj.png/large_movie_poster.png"} alt="Poster"/>
                         <p>{res.Title} ({res.Year})</p>
-                        <button onClick={() => props.nominateMovie(res)}>Nominate</button>
+                        {props.isNominated(res.imdbID) ? <button disabled>Nominate</button> : <button onClick={() => props.nominateMovie(res)}>Nominate</button>}
                     </li>
             )
         });

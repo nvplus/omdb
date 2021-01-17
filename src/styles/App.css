@@ -8,12 +8,13 @@ body {
   font-size: 15px;
   background-color: #1f1f1f;
   display: flex;
-  padding-left: 50px;
+  padding-left: 5%;
 }
 
 .navbar h1 {
-  margin-right: 59%;
+  margin-right: 150px;
   color: #5FF56B;
+  padding-right: 68%;
 }
 
 .navbar p {

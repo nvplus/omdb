@@ -40,11 +40,14 @@ function App() {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    setNominations(JSON.parse(localStorage.getItem("localNominations")));
+    let localNominations = JSON.parse(localStorage.getItem("localNominations"))
+    if (localNominations == null) setNominations([]);
+    else setNominations(localNominations);
 
   }, []);
 
   let isNominated = imdbID => {
+    if (!nominations) return false;
     for (const nomination of nominations) {
       if (nomination.imdbID === imdbID) return true;
     }
